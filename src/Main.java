@@ -1,5 +1,4 @@
 import com.framallo90.product.controller.ProductController;
-import com.framallo90.product.model.entities.Product;
 import com.framallo90.product.model.repositories.ProductRepository;
 import com.framallo90.product.view.ProductView;
 
@@ -8,6 +7,10 @@ public class Main {
         ProductView productView= new ProductView();
         ProductRepository productRepository= new ProductRepository();
         ProductController productController= new ProductController(productView,productRepository);
-        productController.createProduct();
+        productController.createProducts();
+        productController.readProduct();
+        productController.updateProduct();
+        productController.removeProduct();
+
     }
 }

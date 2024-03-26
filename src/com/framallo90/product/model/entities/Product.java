@@ -9,6 +9,14 @@ public class Product {
         this.nameProduct = nameProduct;
     }
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", nameProduct='" + nameProduct + '\'' +
+                '}';
+    }
+
     public String getNameProduct() {
         return nameProduct;
     }
