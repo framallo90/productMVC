@@ -4,7 +4,6 @@ import com.framallo90.product.model.entities.Product;
 import com.framallo90.product.model.repositories.ProductRepository;
 import com.framallo90.product.view.ProductView;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ProductController {
