@@ -42,22 +42,15 @@ public class CategoryView {
             return categoriaEncontrada;
         }
 
-    public Category searchCategoryName(ArrayList<Category> lista, String nameSearch) {
-        int i = 0;
-        Category categoriaEncontrada = null;
-        String buscarNom = nameSearch;
-        for(Category category : lista) {
-            if (category.getName().equals(buscarNom)) {
-                categoriaEncontrada = category;
-                break;
+    public Category searchCategoryName(ArrayList<Category> lista,String nameSearch) {
+        String buscarNom = nameSearch.toLowerCase();
+        for (Category category : lista) {
+            if (category.getName().toLowerCase().equals(buscarNom)) {
+                return category;
             }
         }
-        if(categoriaEncontrada == null){
-            System.out.println("Categoria no encontrada");
-        }else{
-            System.out.println("La Categoria se encuentra en la lista");
-        }
-        return categoriaEncontrada;
+        System.out.println("Categoria no encontrada");
+        return null;
     }
 
         public void removeCategory(ArrayList<Category> lista){

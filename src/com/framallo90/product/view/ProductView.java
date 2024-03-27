@@ -19,21 +19,30 @@ public class ProductView {
         System.out.println("Product id: "+ product.getId());
     }
 
-    public Product createProduct(){
+    public Product createProduct() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Ingrese el nombre del producto");
         String nameProduct = scanner.nextLine();
 
         System.out.println("Ingrese el id");
-        Integer id = scanner.nextInt();
+        int id = scanner.nextInt();
 
-        System.out.println("Ingrese Categoria");
-        categoryController.readCategoryList();
-        String newCategory = scanner.nextLine();
-        Category categoria = categoryController.searchCategoryName(newCategory);
+        scanner.nextLine();
 
+        Category categoria = null;
+        do {
+            categoryController.readCategoryList();
 
-        return new Product(id,nameProduct,categoria);
+            System.out.println("Ingrese la categoría del producto:");
+            String categoryName = scanner.nextLine();
+            categoria = categoryController.searchCategoryName(categoryName);
+
+            if (categoria == null) {
+                System.out.println("La categoría ingresada no existe, vuelva a intentarlo.");
+            }
+        } while (categoria == null);
+
+        return new Product(id, nameProduct, categoria);
     }
 
     public Product searchProduct(ArrayList<Product> lista) {
