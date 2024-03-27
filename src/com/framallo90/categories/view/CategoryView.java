@@ -42,6 +42,24 @@ public class CategoryView {
             return categoriaEncontrada;
         }
 
+    public Category searchCategoryName(ArrayList<Category> lista, String nameSearch) {
+        int i = 0;
+        Category categoriaEncontrada = null;
+        String buscarNom = nameSearch;
+        for(Category category : lista) {
+            if (category.getName().equals(buscarNom)) {
+                categoriaEncontrada = category;
+                break;
+            }
+        }
+        if(categoriaEncontrada == null){
+            System.out.println("Categoria no encontrada");
+        }else{
+            System.out.println("La Categoria se encuentra en la lista");
+        }
+        return categoriaEncontrada;
+    }
+
         public void removeCategory(ArrayList<Category> lista){
             System.out.println("ELIMINANDO CATEGORIA ");
             Category eliminarC = searchCategory(lista);

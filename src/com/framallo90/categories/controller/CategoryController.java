@@ -3,10 +3,7 @@ package com.framallo90.categories.controller;
 import com.framallo90.categories.model.entities.Category;
 import com.framallo90.categories.model.repositories.CategoryRepository;
 import com.framallo90.categories.view.CategoryView;
-import com.framallo90.product.controller.ProductController;
-import com.framallo90.product.model.entities.Product;
 
-import java.util.Locale;
 import java.util.Scanner;
 
 public class CategoryController {
@@ -36,6 +33,11 @@ public class CategoryController {
     }
     public void searchCategory(){
         Category category = categoryView.searchCategory(categoryRepository.getListCategories());
+    }
+
+    public Category searchCategoryName(String name){
+        Category category = categoryView.searchCategoryName(categoryRepository.getListCategories(), name);
+        return category;
     }
 
     public void updateCategory(){

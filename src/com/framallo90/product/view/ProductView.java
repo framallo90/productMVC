@@ -1,11 +1,19 @@
 package com.framallo90.product.view;
 
+import com.framallo90.categories.controller.CategoryController;
+import com.framallo90.categories.model.entities.Category;
+import com.framallo90.categories.model.repositories.CategoryRepository;
+import com.framallo90.categories.view.CategoryView;
 import com.framallo90.product.model.entities.Product;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ProductView {
+    CategoryView categoryView = new CategoryView();
+    CategoryRepository categoryRepository = new CategoryRepository();
+    CategoryController categoryController = new CategoryController(categoryRepository, categoryView);
+
     public void viewProduct(Product product){
         System.out.println("Product name: "+ product.getNameProduct());
         System.out.println("Product id: "+ product.getId());
@@ -19,7 +27,13 @@ public class ProductView {
         System.out.println("Ingrese el id");
         Integer id = scanner.nextInt();
 
-        return new Product(id,nameProduct);
+        System.out.println("Ingrese Categoria");
+        categoryController.readCategoryList();
+        String newCategory = scanner.nextLine();
+        Category categoria = categoryController.searchCategoryName(newCategory);
+
+
+        return new Product(id,nameProduct,categoria);
     }
 
     public Product searchProduct(ArrayList<Product> lista) {
@@ -67,6 +81,10 @@ public class ProductView {
             System.out.println("Ingrese el nuevo nombre para el producto");
             String nuevoNombre = scanner.nextLine();
             modificarP.setNameProduct(nuevoNombre);
+            System.out.println("Ingrese la nueva categoria");
+            String nuevaCategoria = scanner.nextLine();
+            Category newCategory = categoryController.searchCategoryName(nuevaCategoria);
+            modificarP.setCategory(newCategory);
             System.out.println("El Producto ha sido modificado correctamente.");
         }
     }
