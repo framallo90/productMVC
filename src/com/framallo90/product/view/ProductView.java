@@ -31,6 +31,7 @@ public class ProductView {
 
         Category categoria = null;
         do {
+            categoryController.createCategories();
             categoryController.readCategoryList();
 
             System.out.println("Ingrese la categoría del producto:");
@@ -101,7 +102,7 @@ public class ProductView {
     public void readProductList(ArrayList<Product> lista){
         System.out.println("LISTA: ");
         for(Product product : lista){
-            System.out.println(product.toString());;
+            System.out.println(product.toString());
         }
     }
 }

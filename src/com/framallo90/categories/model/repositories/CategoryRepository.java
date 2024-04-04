@@ -19,7 +19,7 @@ public class CategoryRepository {
             this.listCategories = new ArrayList<>();
         }
 
-        public void addListCategory(Category category){
+    public void addListCategory(Category category){
             this.listCategories.add(category);
         }
  }
